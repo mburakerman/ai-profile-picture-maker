@@ -9,23 +9,26 @@ var downloadButton = document.getElementById("downloadButton");
 var uploadButton = document.getElementById("uploadButton");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+var canvasImg;
 
 // start
 startButton.addEventListener("click", function () {
     this.disabled = true;
     startButtonText.innerHTML = "Loading..."
     loading.style.display = "inline-block";
+    downloadButton.classList.add("d-none");
     makePrediction();
 });
 
 // image update
 uploadButton.addEventListener("click", function () {
     var imgSrc = imgInput.value;
+    if (imgSrc.length < 1) return;
     img.src = imgSrc;
 });
 
 
-// the magic!
+// the magic
 function makePrediction() {
     // Load the model
     cocoSsd.load().then(model => {
@@ -34,11 +37,13 @@ function makePrediction() {
             loading.style.display = "none";
             startButtonText.innerHTML = "Start"
             startButton.disabled = false;
+            downloadButton.classList.remove("d-none");
             console.log("Predictions: ", predictions);
             predictionResult = predictions;
             drawImageIntoCanvas();
             drawPredictionSquare(predictionResult);
-            confetti.start(100);
+            downloadCanvasImage();
+            confetti.start(1000);
             prediction.innerHTML = "score:" + JSON.stringify(predictions[0].score, null, 2);
         });
     });
@@ -49,6 +54,10 @@ function drawImageIntoCanvas() {
     canvas.width = img.width;
     canvas.height = img.height;
     ctx.drawImage(img, 0, 0, img.width, img.height);
+}
+function downloadCanvasImage() {
+    canvasImg = canvas.toDataURL("image/png");
+    downloadButton.href = canvasImg;
 }
 
 
@@ -69,7 +78,6 @@ function drawPredictionSquare(predictionSquareDetails) {
     var text = predictionSquareDetails[0].class;
     ctx.font = "15px Arial";
     ctx.fillStyle = "blue";
-    //ctx.textAlign = "center";
     //ctx.textBaseline = "middle";
     roundRect(ctx, predictionSquareInfo.x, predictionSquareInfo.y - 21, ctx.measureText(text).width, 16, 0, true);
     ctx.fillStyle = "white";

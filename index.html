@@ -3,11 +3,14 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>AI Profile Picture Maker</title>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://platform.twitter.com">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/app.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/microtip@0.2.2/microtip.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
     <script src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script>
@@ -27,31 +30,37 @@
                 <img id="img" crossorigin="anonymous" class="img-fluid"
                     src="https://i.insider.com/555f45a66bb3f7430b72d409?width=600&format=jpeg&auto=webp" />
                 <div class="input-group mt-4">
-                    <input type="text" class="form-control" id="imgInput" placeholder="Paste your image url">
+                    <input type="text" class="form-control" id="imgInput"
+                        placeholder="Paste your image url and press upload">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="uploadButton">Upload</button>
+                        <button class="btn btn-outline-secondary" type="button" id="uploadButton"
+                            aria-label="Some image urls may fail because of the cors error. You can use imgbb.com."
+                            data-microtip-position="top" data-microtip-size="medium" role="tooltip">Upload</button>
                     </div>
                 </div>
             </div>
             <div class="col-lg mb-4">
                 <canvas id="canvas"></canvas>
                 <div class="input-group mt-3">
-                    <a href="javascript:;" id="downloadButton" class="btn btn-outline-secondary d-none">Download</a>
+                    <a download href="javascript:;" id="downloadButton"
+                        class="btn btn-outline-secondary ml-auto d-none">Download Image</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="row">
-        <div class="col-md-2 mx-auto mt-5">
-            <button class="btn btn-primary btn-block" id="startButton">
-                <span class="spinner-grow spinner-grow-sm" role="status" id="loading" style="display:none;"></span>
-                <span id="startButtonText">Start</span>
-            </button>
-
-            <div id="prediction"></div>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-2 mx-auto mt-5">
+                <button class="btn btn-primary btn-block" id="startButton">
+                    <span class="spinner-grow spinner-grow-sm" role="status" id="loading" style="display:none;"></span>
+                    <span id="startButtonText">Start</span>
+                </button>
+                <br>
+                <div id="prediction"></div>
+            </div>
         </div>
-    </div>
+    </section>
 
     <footer class="pt-5 pb-5 mt-5">
         <div class="container">
@@ -76,16 +85,17 @@
                     <p><strong>TensorFlow.js</strong> is a library for machine learning in JavaScript. <br>
                         <strong>COCO</strong> is a large-scale object detection, segmentation, and captioning dataset.
                     </p>
-                    <p>For more info <a
+                    <p>For more info click <a
                             href="https://github.com/tensorflow/models/blob/master/research/object_detection/README.md"
-                            tqrget="_blank" rel="noopener"> click here</a>.
+                            tqrget="_blank" rel="noopener">here</a>.
                     </p>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-4 offset-md-4">
-                    <p>2020 Copyright</p>
+                    <p> © Copyright <br> <a href="https://mburakerman.github.io" target="_blank">Mehmet Burak Erman</a>
+                    </p>
                 </div>
             </div>
         </div>
