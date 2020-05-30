@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>AI Profile Picture Maker</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/app.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+    <script src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script>
+</head>
+
+<body>
+
+    <header class="py-4 mb-5 text-center">
+        <div class="container">
+            <h1 class="text-center">AI Profile Picture Maker</h1>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-lg mb-4">
+                <img id="img" crossorigin="anonymous" class="img-fluid"
+                    src="https://i.insider.com/555f45a66bb3f7430b72d409?width=600&format=jpeg&auto=webp" />
+                <div class="input-group mt-4">
+                    <input type="text" class="form-control" id="imgInput" placeholder="Paste your image url">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="uploadButton">Upload</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg mb-4">
+                <canvas id="canvas"></canvas>
+                <div class="input-group mt-3">
+                    <a href="javascript:;" id="downloadButton" class="btn btn-outline-secondary d-none">Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="row">
+        <div class="col-md-2 mx-auto mt-5">
+            <button class="btn btn-primary btn-block" id="startButton">
+                <span class="spinner-grow spinner-grow-sm" role="status" id="loading" style="display:none;"></span>
+                <span id="startButtonText">Start</span>
+            </button>
+
+            <div id="prediction"></div>
+        </div>
+    </div>
+
+    <footer class="pt-5 pb-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
+                        data-text="AI Profile Picture Maker #ai" data-show-count="false">Tweet</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 offset-md-4 pt-4">
+                    <h4>What is this?</h4>
+                    <p>In this demo, i am using object detection technology using <a
+                            href="https://www.tensorflow.org/js/" target="_blank" rel="noopener">Tensorflow.js</a> and
+                        <a href="https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd" target="_blank"
+                            rel="noopener">COCO-SSD</a> models.</p>
+                    <p><strong>Object detection</strong> is a computer technology related to computer vision and image
+                        processing that
+                        deals with detecting instances of semantic objects of a certain class (such as humans,
+                        buildings, or cars) in digital images and videos.</p>
+                    <p><strong>TensorFlow.js</strong> is a library for machine learning in JavaScript. <br>
+                        <strong>COCO</strong> is a large-scale object detection, segmentation, and captioning dataset.
+                    </p>
+                    <p>For more info <a
+                            href="https://github.com/tensorflow/models/blob/master/research/object_detection/README.md"
+                            tqrget="_blank" rel="noopener"> click here</a>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <p>2020 Copyright</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
