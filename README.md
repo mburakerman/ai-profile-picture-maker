@@ -2,6 +2,8 @@
 <p>This is AI Profile Picture Maker and i made this with object detection technology using <a href="https://www.tensorflow.org/js/" target="_blank" rel="noopener">Tensorflow.js</a> and
                         <a href="https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd" target="_blank" rel="noopener">COCO-SSD</a> models.</p>
                         
+<img src="https://raw.githubusercontent.com/mburakerman/ai-profile-picture-maker/master/assets/examples/ss.png" /> 
+
 ## Examples
 <p>
 <img width="450" src="https://raw.githubusercontent.com/mburakerman/ai-profile-picture-maker/master/assets/examples/ataturk.jpeg" />
