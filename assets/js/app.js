@@ -66,12 +66,13 @@ function makePrediction() {
 
 
 function drawPredictionSquare(predictionSquareDetails) {
+    var predictionSquareDetailsLastItem = predictionSquareDetails[predictionSquareDetails.length - 1];
     var predictionSquareInfo = {
-        x: Math.abs(predictionSquareDetails[0].bbox[0]),
-        y: Math.abs(predictionSquareDetails[0].bbox[1]),
-        width: predictionSquareDetails[0].bbox[2],
-        height: predictionSquareDetails[0].bbox[3],
-        text: predictionSquareDetails[0].class,
+        x: Math.abs(predictionSquareDetailsLastItem.bbox[0]),
+        y: Math.abs(predictionSquareDetailsLastItem.bbox[1]),
+        width: predictionSquareDetailsLastItem.bbox[2],
+        height: predictionSquareDetailsLastItem.bbox[3],
+        text: predictionSquareDetailsLastItem.class,
         lineWidth: 4,
     }
     ctx.beginPath();
@@ -91,6 +92,7 @@ function drawPredictionSquare(predictionSquareDetails) {
 
 
 function filterPositivePrediction(arr) {
+    predictionResultPositive = [];
     arr.forEach(function (item) {
         if (!item.bbox.some(v => v < 0)) {
             predictionResultPositive.push(item);
