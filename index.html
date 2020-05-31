@@ -26,7 +26,7 @@
 
     <section class="container">
         <div class="row">
-            <div class="col-lg mb-4">
+            <div class="col-lg mb-5">
                 <img id="img" crossorigin="anonymous" class="img-fluid"
                     src="https://i.insider.com/555f45a66bb3f7430b72d409?width=600&format=jpeg&auto=webp" />
                 <div class="input-group mt-4">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg mb-4">
+            <div class="col-lg mb-5">
                 <canvas id="canvas"></canvas>
                 <div class="input-group mt-3">
                     <a download href="javascript:;" id="downloadButton"
@@ -51,18 +51,16 @@
 
     <section class="container">
         <div class="row">
-            <div class="col-md-2 mx-auto mt-5">
+            <div class="col-md-2 mx-auto mt-4">
                 <button class="btn btn-primary btn-block" id="startButton">
                     <span class="spinner-grow spinner-grow-sm" role="status" id="loading" style="display:none;"></span>
                     <span id="startButtonText">Start</span>
                 </button>
-                <br>
-                <div id="prediction"></div>
             </div>
         </div>
     </section>
 
-    <footer class="pt-5 pb-5 mt-5">
+    <footer class="pt-5 pb-2 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 offset-md-4">
@@ -74,10 +72,11 @@
             <div class="row">
                 <div class="col-md-4 offset-md-4 pt-4">
                     <h4>What is this?</h4>
-                    <p>In this demo, i am using object detection technology using <a
+                    <p>This is AI Profile Picture Maker and i made this with object detection technology using <a
                             href="https://www.tensorflow.org/js/" target="_blank" rel="noopener">Tensorflow.js</a> and
                         <a href="https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd" target="_blank"
                             rel="noopener">COCO-SSD</a> models.</p>
+                    </p>
                     <p><strong>Object detection</strong> is a computer technology related to computer vision and image
                         processing that
                         deals with detecting instances of semantic objects of a certain class (such as humans,
@@ -94,12 +93,13 @@
 
             <div class="row">
                 <div class="col-md-4 offset-md-4">
-                    <p> © Copyright <br> <a href="https://mburakerman.github.io" target="_blank">Mehmet Burak Erman</a>
+                    <p> © Copyright - <a href="https://mburakerman.github.io" target="_blank" rel="noopener">Mehmet
+                            Burak Erman</a>
                     </p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="assets/js/app.js"></script>
+    <script defer src="assets/js/app.js"></script>
 </body>

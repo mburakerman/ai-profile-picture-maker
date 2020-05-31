@@ -2,7 +2,6 @@ var predictionResult;
 var img = document.getElementById("img");
 var imgInput = document.getElementById("imgInput");
 var loading = document.getElementById("loading");
-var prediction = document.getElementById("prediction");
 var startButton = document.getElementById("startButton");
 var startButtonText = document.getElementById("startButtonText");
 var downloadButton = document.getElementById("downloadButton");
@@ -44,7 +43,6 @@ function makePrediction() {
             drawPredictionSquare(predictionResult);
             downloadCanvasImage();
             confetti.start(1000);
-            prediction.innerHTML = "score:" + JSON.stringify(predictions[0].score, null, 2);
         });
     });
 }
@@ -66,29 +64,29 @@ function drawPredictionSquare(predictionSquareDetails) {
         x: Math.abs(predictionSquareDetails[0].bbox[0]),
         y: Math.abs(predictionSquareDetails[0].bbox[1]),
         width: predictionSquareDetails[0].bbox[2],
-        height: predictionSquareDetails[0].bbox[3]
+        height: predictionSquareDetails[0].bbox[3],
+        text: predictionSquareDetails[0].class,
+        lineWidth: 4,
     }
     ctx.beginPath();
     ctx.rect(predictionSquareInfo.x, predictionSquareInfo.y, predictionSquareInfo.width, predictionSquareInfo.height);
     ctx.strokeStyle = "blue";
-    ctx.lineWidth = 5;
+    ctx.lineWidth = predictionSquareInfo.lineWidth;
     ctx.stroke();
 
 
-    var text = predictionSquareDetails[0].class;
-    ctx.font = "15px Arial";
+    ctx.font = "14px Arial";
     ctx.fillStyle = "blue";
-    //ctx.textBaseline = "middle";
-    roundRect(ctx, predictionSquareInfo.x, predictionSquareInfo.y - 21, ctx.measureText(text).width, 16, 0, true);
+    createTextRect(ctx, predictionSquareInfo.x, predictionSquareInfo.y - 19, ctx.measureText(predictionSquareInfo.text).width, 16, 0, true);
     ctx.fillStyle = "white";
-    ctx.fillText(text, predictionSquareInfo.x, predictionSquareInfo.y - 10);
+    ctx.fillText(predictionSquareInfo.text, predictionSquareInfo.x, predictionSquareInfo.y - 10);
 }
 
 
 
 
 
-function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+function createTextRect(ctx, x, y, width, height, radius, fill, stroke) {
     if (typeof stroke == "undefined") {
         stroke = true;
     }
