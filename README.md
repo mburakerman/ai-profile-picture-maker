@@ -36,6 +36,8 @@ buildings, or cars) in digital images and videos. <a href="https://github.com/te
 <p><strong>TensorFlow.js</strong> is a library for machine learning in JavaScript. <br>
 <strong>COCO</strong> is a large-scale object detection, segmentation, and captioning dataset.
 </p>
+
 ## Is my image safe?
+
 <p>Yes. Your image is saved to your browser. There is no server for this. They are in your computer.
 </p>
