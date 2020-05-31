@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
     <script src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script>
+    <script src="https://unpkg.com/blueimp-load-image@5.12.0/js/load-image.all.min.js"></script>
 </head>
 
 <body>
@@ -30,12 +31,9 @@
                 <img id="img" crossorigin="anonymous" class="img-fluid"
                     src="https://i.insider.com/555f45a66bb3f7430b72d409?width=600&format=jpeg&auto=webp" />
                 <div class="input-group mt-4">
-                    <input type="text" class="form-control" id="imgInput"
-                        placeholder="Paste your image url and press upload">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="uploadButton"
-                            aria-label="Some image urls may fail because of the cors error. You can use imgbb.com."
-                            data-microtip-position="top" data-microtip-size="medium" role="tooltip">Upload</button>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="imageFileInput">
+                        <label class="custom-file-label" for="imageFileInput">Choose your image</label>
                     </div>
                 </div>
             </div>
@@ -75,18 +73,19 @@
                     <p>This is AI Profile Picture Maker and i made this with object detection technology using <a
                             href="https://www.tensorflow.org/js/" target="_blank" rel="noopener">Tensorflow.js</a> and
                         <a href="https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd" target="_blank"
-                            rel="noopener">COCO-SSD</a> models.</p>
+                            rel="noopener">COCO-SSD</a> models.
                     </p>
                     <p><strong>Object detection</strong> is a computer technology related to computer vision and image
                         processing that
                         deals with detecting instances of semantic objects of a certain class (such as humans,
-                        buildings, or cars) in digital images and videos.</p>
+                        buildings, or cars) in digital images and videos. <a
+                            href="https://github.com/tensorflow/models/blob/master/research/object_detection/README.md"
+                            target="_blank" rel="noopener">more info</a></p>
                     <p><strong>TensorFlow.js</strong> is a library for machine learning in JavaScript. <br>
                         <strong>COCO</strong> is a large-scale object detection, segmentation, and captioning dataset.
                     </p>
-                    <p>For more info click <a
-                            href="https://github.com/tensorflow/models/blob/master/research/object_detection/README.md"
-                            tqrget="_blank" rel="noopener">here</a>.
+                    <h5>Is my image safe?</h5>
+                    <p>Yes. Your image is saved to your browser. There is no server for this. They are in your computer.
                     </p>
                 </div>
             </div>

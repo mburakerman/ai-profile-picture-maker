@@ -2,11 +2,11 @@ var predictionResult;
 var predictionResultPositive = [];
 var img = document.getElementById("img");
 var imgInput = document.getElementById("imgInput");
+var imageFileInput = document.getElementById("imageFileInput");
 var loading = document.getElementById("loading");
 var startButton = document.getElementById("startButton");
 var startButtonText = document.getElementById("startButtonText");
 var downloadButton = document.getElementById("downloadButton");
-var uploadButton = document.getElementById("uploadButton");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var canvasImg;
@@ -20,13 +20,18 @@ startButton.addEventListener("click", function () {
     makePrediction();
 });
 
-// image update
-uploadButton.addEventListener("click", function () {
-    var imgSrc = imgInput.value;
-    if (imgSrc.length < 1) return;
-    img.src = imgSrc;
-});
+// image update (convert image file to base64 string)
+imageFileInput.onchange = function () {
+    var file = imageFileInput.files[0];
+    var reader = new FileReader();
+    reader.addEventListener("load", function () {
+        img.src = reader.result;
+    }, false);
 
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
 
 
 // draw image into canvas
