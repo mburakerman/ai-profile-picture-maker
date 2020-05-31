@@ -1,4 +1,5 @@
 var predictionResult;
+var predictionResultPositive = [];
 var img = document.getElementById("img");
 var imgInput = document.getElementById("imgInput");
 var loading = document.getElementById("loading");
@@ -27,25 +28,6 @@ uploadButton.addEventListener("click", function () {
 });
 
 
-// the magic
-function makePrediction() {
-    // Load the model
-    cocoSsd.load().then(model => {
-        // detect objects in the image.
-        model.detect(img).then(predictions => {
-            loading.style.display = "none";
-            startButtonText.innerHTML = "Start"
-            startButton.disabled = false;
-            downloadButton.classList.remove("d-none");
-            console.log("Predictions: ", predictions);
-            predictionResult = predictions;
-            drawImageIntoCanvas();
-            drawPredictionSquare(predictionResult);
-            downloadCanvasImage();
-            confetti.start(1000);
-        });
-    });
-}
 
 // draw image into canvas
 function drawImageIntoCanvas() {
@@ -56,6 +38,30 @@ function drawImageIntoCanvas() {
 function downloadCanvasImage() {
     canvasImg = canvas.toDataURL("image/png");
     downloadButton.href = canvasImg;
+}
+
+
+// the magic
+function makePrediction() {
+    // clear canvas first
+    canvas.width = canvas.width
+    // load the model
+    cocoSsd.load().then(model => {
+        // detect objects in the image.
+        model.detect(img).then(predictions => {
+            predictionResult = predictions;
+            filterPositivePrediction(predictionResult);
+            // callbacks
+            loading.style.display = "none";
+            startButtonText.innerHTML = "Start"
+            startButton.disabled = false;
+            downloadButton.classList.remove("d-none");
+            drawImageIntoCanvas();
+            drawPredictionSquare(predictionResultPositive);
+            downloadCanvasImage();
+            confetti.start(1000);
+        });
+    });
 }
 
 
@@ -84,7 +90,13 @@ function drawPredictionSquare(predictionSquareDetails) {
 
 
 
-
+function filterPositivePrediction(arr) {
+    arr.forEach(function (item) {
+        if (!item.bbox.some(v => v < 0)) {
+            predictionResultPositive.push(item);
+        }
+    });
+}
 
 function createTextRect(ctx, x, y, width, height, radius, fill, stroke) {
     if (typeof stroke == "undefined") {
