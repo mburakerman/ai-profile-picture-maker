@@ -103,6 +103,12 @@ function filterPositivePrediction(arr) {
             predictionResultPositive.push(item);
         }
     });
+    predictionResultPositive.forEach(function (item) {
+        if (item.class == "person") {
+            predictionResultPositive = [];
+            predictionResultPositive.push(item)
+        }
+    });
 }
 
 function createTextRect(ctx, x, y, width, height, radius, fill, stroke) {
